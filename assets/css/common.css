@@ -1,0 +1,26 @@
+/* body styling */
+body{
+    background: linear-gradient(to bottom, white, rgb(186, 254, 250)); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* form container styling */
+.frm-container {
+    display: grid;
+    place-content: center;
+    width: 530px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(rgb(170, 170, 170),rgb(236, 236, 236), rgb(170, 170, 170));
+    padding: 30px 20px;
+}
+
+/* background black */
+.bg-black{
+    background-color: black;
+}
