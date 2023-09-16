@@ -7,7 +7,12 @@ module.exports.companyPage = async function (req, res) {
   try {
     // Retrieve all students from the database
     const students = await Student.find({});
+    // Retrieve all interviews by company from the database
+    const interviews = await Company.find({}).populate('students.student');;
     // Render the 'company' view with the list of students
+    console.log("interviews", interviews);
+    // console.log("interviews- students", interviews.students);
+    // console.log("students", students);
     return res.render('company', { students, interviews });
   } catch (error) {
     console.log(`Error in rendering page: ${error}`);
