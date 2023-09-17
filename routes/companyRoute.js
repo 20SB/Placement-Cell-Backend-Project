@@ -12,6 +12,9 @@ router.get('/home', passport.checkAuthentication, companyController.companyPage)
 // Route to allocate interviews, requires authentication
 router.get('/allocate', passport.checkAuthentication, companyController.allocateInterview);
 
+// Route to display job listings, requires authentication
+router.get('/jobs', passport.checkAuthentication, companyController.displayJobs);
+
 
 // -------- Post Requests ---------
 

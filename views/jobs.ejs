@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GitHub Jobs</title>
+    </head>
+    <body>
+        <h1>Job Listings</h1>
+    <ul>
+        <% jobs.data.forEach(function(job) { %>
+            <li>
+                <h2><a href="<%= job.url %>" target="_blank"><%= job.title %></a></h2>
+                <p><strong>Company:</strong> <%= job.company %></p>
+                <p><strong>Post Date:</strong> <%= job.postDate %></p>
+                <p><strong>Job Source:</strong> <%= job.jobSource %></p>
+                <!-- Add more details as needed -->
+            </li>
+        <% }); %>
+    </ul>
+
+        <script>
+            async function ape() {
+                const url = "https://jobsearch4.p.rapidapi.com/api/v2/Jobs/Latest";
+                const options = {
+                    method: "GET",
+                    headers: {
+                        "X-RapidAPI-Key": "ddd3fc11ffmsh9d0d22b1c7b3320p17677bjsn00aa4c7a24aa",
+                        "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com",
+                    },
+                };
+
+                try {
+                    const response = await fetch(url, options);
+                    const result = await response.json();
+                    console.log(result.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+            ape();
+        </script>
+    </body>
+</html>
