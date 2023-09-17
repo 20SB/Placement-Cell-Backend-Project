@@ -1,0 +1,19 @@
+.job-card{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    border: 1px solid #c8c8c8;
+    padding: 5px 30px;
+    box-shadow: 0px 0px 20px 0px lightgray;
+}
+.job-company, .job-post-date, .job-source{
+    padding-left: 20px;
+}
+.job-heading{
+    color: #01019f;
+}
+.apply{
+    display: flex;
+    /* align-items: flex-end; */
+    flex-direction: column-reverse;
+}

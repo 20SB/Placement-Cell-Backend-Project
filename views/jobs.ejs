@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <%- include('_bootstrap_meta')%>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GitHub Jobs</title>
+        <link rel="shortcut icon" href="/images/jobs.png" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/common.css" />
+        <link rel="stylesheet" href="/css/job.css" />
+        <title>Jobs</title>
     </head>
     <body>
-        <h1>Job Listings</h1>
-    <ul>
-        <% jobs.data.forEach(function(job) { %>
-            <li>
-                <h2><a href="<%= job.url %>" target="_blank"><%= job.title %></a></h2>
-                <p><strong>Company:</strong> <%= job.company %></p>
-                <p><strong>Post Date:</strong> <%= job.postDate %></p>
-                <p><strong>Job Source:</strong> <%= job.jobSource %></p>
-                <!-- Add more details as needed -->
-            </li>
-        <% }); %>
-    </ul>
+        <%- include('_header') %>
 
-        <script>
-            async function ape() {
-                const url = "https://jobsearch4.p.rapidapi.com/api/v2/Jobs/Latest";
-                const options = {
-                    method: "GET",
-                    headers: {
-                        "X-RapidAPI-Key": "ddd3fc11ffmsh9d0d22b1c7b3320p17677bjsn00aa4c7a24aa",
-                        "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com",
-                    },
-                };
+        <div class="w-75 mx-auto mt-5">
+            <h1>Job Listings</h1>
+            <ul>
+                <% jobs.data.forEach(function(job) { %>
+                <li class="job-card">
+                    <div class="info">
+                        <div class="job-heading"><h2><%= job.title %></h2></div>
+                        <div class="job-company"><strong>Company:</strong> <%= job.company %></div>
+                        <div class="job-post-date"><strong>Post Date:</strong> <%= job.postDate %></div>
+                        <div class="job-source"><strong>Job Source:</strong> <%= job.jobSource %></div>
+                    </div>
+                    <div class="apply">
+                        <a href="<%= job.url %>" target="_blank"><button type="submit" class="btn btn-warning btn-small m-2">Apply</button></a>
+                    </div>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
 
-                try {
-                    const response = await fetch(url, options);
-                    const result = await response.json();
-                    console.log(result.data);
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-            ape();
-        </script>
+        <%- include('_bootstrap_script')%>
     </body>
 </html>
