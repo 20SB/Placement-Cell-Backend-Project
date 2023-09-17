@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <%- include('_bootstrap_meta')%>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="shortcut icon" href="https://p7.hiclipart.com/preview/950/320/1014/computer-icons-queue-clip-art-group.jpg" type="image/x-icon" />
         <link rel="stylesheet" href="/css/common.css" />
         <link rel="stylesheet" href="/css/company.css" />
@@ -11,14 +12,27 @@
     <body>
         <%- include('_header') %>
         <div class="w-75 mx-auto mt-5">
-            <div class="row">
+            <div class="row head-row">
                 <!-- page heading -->
-                <div class="col-6">
+                <div >
                     <h1>Interviews</h1>
                 </div>
 
+                <div >
+                    <form id="choose-company"  style="display: flex; align-items: center;" >
+                        <select name="slct-by-cmpny" id="slct-by-cmpny">
+                            <option value="all">All</option>
+                            <% for(let company of interviews){%>
+                                <option value="<%= company.name %>"><%= company.name %></option   >
+                            <% } %>
+                        </select>
+                        <button type="submit" class="btn btn-secondary btn-small m-2" style="font-size: 14px;
+                        padding: 3px 10px;">Apply</button>
+                    </form>
+                </div>
+
                 <!-- allocate new interview button -->
-                <div class="col-6 d-flex justify-content-end">
+                <div >
                     <a href="/company/allocate" type="button" class="btn btn-success align-self-center">Allocate Interview</a>
                 </div>
             </div>
@@ -26,7 +40,7 @@
             <!-- print all interviews list -->
             <div>
                 <% if(students.length > 0) {%>
-                <div class="mt-3 mb-3">
+                <div class="mt-3 mb-3 interview-table" id="for-all">
                     <table class="table table-bordered table-striped">
                         <!-- table column headings -->
                         <thead class="thead-dark">
@@ -82,16 +96,16 @@
 
             <div>
                 <!-- print each interview list -->
-                <% for(let company of interviews){%> <%=company.name%>
-                <br />
+                <% for(let company of interviews){%>
                 <% let students = company.students %>
 
                 <!-- print interviews list -->
-                <div class="mt-3 mb-3">
+                <div class="mt-3 mb-3 interview-table" id="for-<%=company.name%>">
                     <table class="table table-bordered table-striped">
                         <!-- table column headings -->
                         <thead class="thead-dark">
                             <tr>
+                                <th scope="col">Company</th>
                                 <th scope="col">Student</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Contact</th>
@@ -105,6 +119,7 @@
                         <tbody id="myTable">
                             <% for(let std of students){%> <% let student = std.student %>
                             <tr class="row-ref">
+                                <th><%=company.name%></th>
                                 <td><%=student.name%></td>
                                 <td><%=student.email%></td>
                                 <td><%=student.contactNumber%></td>
@@ -134,15 +149,12 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- print interviews list -->
-                <br />
-                <br />
-
                 <% } %>
             </div>
 			
         </div>
 
         <%- include('_bootstrap_script')%>
+        <script src="/js/interview.js"></script>
     </body>
 </html>

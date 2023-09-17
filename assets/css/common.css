@@ -24,3 +24,6 @@ body{
 .bg-black{
     background-color: black;
 }
+.disp-none{
+    display: none;
+}
