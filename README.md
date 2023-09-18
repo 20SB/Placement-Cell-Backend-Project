@@ -51,8 +51,10 @@
 ### Built with
 
 - NodeJs
-- Express
+- ExpressJs
 - MongoDB
+- EJS
+- PassportJs
 - CSS
 - JavaScript
 
