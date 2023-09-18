@@ -11,9 +11,6 @@ module.exports.companyPage = async function (req, res) {
         // Retrieve all interviews by company from the database
         const interviews = await Company.find({}).populate("students.student");
         // Render the 'company' view with the list of students
-        console.log("interviews", interviews);
-        // console.log("interviews- students", interviews.students);
-        // console.log("students", students);
         return res.render("company", { students, interviews });
     } catch (error) {
         console.log(`Error in rendering page: ${error}`);
@@ -135,56 +132,37 @@ module.exports.updateStatus = async function (req, res) {
 
 // Display job listings
 module.exports.displayJobs = async function (req, res) {
-  // return res.render("jobs");
-  const options = {
-    method: 'GET',
-    url: 'https://jobsearch4.p.rapidapi.com/api/v2/Jobs/Latest',
-    headers: {
-      'X-RapidAPI-Key': 'ddd3fc11ffmsh9d0d22b1c7b3320p17677bjsn00aa4c7a24aa',
-      'X-RapidAPI-Host': 'jobsearch4.p.rapidapi.com'
+    // Define options for making an HTTP GET request to a job listing API
+    const options = {
+        method: "GET",
+        url: "https://jobsearch4.p.rapidapi.com/api/v2/Jobs/Latest",
+        headers: {
+            "X-RapidAPI-Key": "ddd3fc11ffmsh9d0d22b1c7b3320p17677bjsn00aa4c7a24aa", // Replace with your actual RapidAPI key
+            "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com",
+        },
+    };
+
+    try {
+        // Send an HTTP GET request using Axios with the defined options
+        const response = await axios.request(options);
+
+        // Check if the response status code is 200 (OK)
+        if (response.status === 200) {
+            // If successful, extract job data from the response
+            const jobs = response.data;
+
+            // Log the job data to the console for debugging
+            console.log(jobs);
+
+            // Render a 'jobs' view and pass the job data to it
+            return res.render("jobs", { jobs });
+        } else {
+            // If the response status is not 200, log an error and redirect back
+            console.error("Error fetching job listings:", response.statusText);
+            return res.redirect("back");
+        }
+    } catch (error) {
+        // Handle any errors that occur during the HTTP request or processing
+        console.error(error);
     }
-  };
-  
-  try {
-    const response = await axios.request(options);
-    // console.log(response.data);
-    if (response.status === 200) {
-      const jobs = response.data;
-      console.log(jobs);
-      // Render the 'jobs' view with the list of job listings
-      return res.render('jobs', { jobs });
-    } else {
-      console.error('Error fetching job listings:', response.statusText);
-      return res.redirect('back');
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
-  // const url = 'https://jobsearch4.p.rapidapi.com/api/v2/Jobs/Latest';
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Key': 'ddd3fc11ffmsh9d0d22b1c7b3320p17677bjsn00aa4c7a24aa',
-  //     'X-RapidAPI-Host': 'jobsearch4.p.rapidapi.com'
-  //   }
-  // };
-
-  //   try {
-  //       const response = await fetch(url, options);
-  //       const result = await response.text();
-  //       console.log(result);
-  //       if (result.status === 200) {
-  //           const jobs = result.data;
-  //           // Render the 'jobs' view with the list of job listings
-  //           return res.render("jobs", { jobs });
-  //       } else {
-  //           console.error("Error fetching job listings:", result.statusText);
-  //           return res.redirect("back");
-  //       }
-  //   } catch (error) {
-  //       console.error("Error in fetching Api: ",error);
-  //   }
-
-    
 };

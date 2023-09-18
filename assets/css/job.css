@@ -1,3 +1,4 @@
+/* Style each job card */
 .job-card{
     display: flex;
     justify-content: space-between;
@@ -12,8 +13,9 @@
 .job-heading{
     color: #01019f;
 }
+
+/* Style Apply button Section */
 .apply{
     display: flex;
-    /* align-items: flex-end; */
     flex-direction: column-reverse;
 }
