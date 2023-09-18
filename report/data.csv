@@ -1,2 +1,4 @@
 S.No, Name, Email, College, Placemnt, Contact Number, Batch, DSA Score, WebDev Score, React Score, Interview, Date, Result
-1,student1,abc1@gmail.com,clg1,Not Placed,1234567890,dec2,10,8,9,apple,2023-09-27,Not Selected
+1,student1,abc1@gmail.com,clg1,Not Placed,1234567890,dec2,10,8,9,Apple,2023-09-27,On Hold,Nasa,2023-09-01,Selected,apple,2023-09-20,Pending
+2,Student2,abc2@gmail.com,clg2,Not Placed,1234,dec2,10,8,8,Apple,2023-09-21,Pending
+3,Student3,abc3@gmail.com,clg2,Not Placed,1122,dec2,6,6,6,Facebook,2023-09-30,Not Selected
