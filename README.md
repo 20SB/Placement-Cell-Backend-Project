@@ -36,7 +36,7 @@
 - Student Page
   ![Student-Page](./page-screenshots/home-page.png)<br /><br />
 
-  - Add student
+- Add student
   ![Add-Student](./page-screenshots/add-students-page.png)<br /><br />
 
 - Interview Page
@@ -45,7 +45,7 @@
 - Schedule Interview
   ![Interview](./page-screenshots/Allocate-interview-page.png)<br /><br />
 
-  - Jobs Page
+- Jobs Page
   ![Add-Student](./page-screenshots/jobs-page.png)<br /><br />
 
 ### Built with
