@@ -28,7 +28,7 @@
 ## Screenshots
 
 - Sign Up
-  ![Sign-Up](./page-screenshots/sign-up-page.png)<br /><br />
+  ![Sign-Up](./page-screenshots/sign-up.png)<br /><br />
 
 - Sign In
   ![Sign-In](./page-screenshots/sign-in-page.png)<br /><br />
