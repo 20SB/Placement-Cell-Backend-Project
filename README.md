@@ -8,8 +8,8 @@
 ## Table of contents
 
 - [Features](#Features)
-  - [Screenshot](#Screenshots)
-  - [Built with](#built-with)
+- [Screenshot](#Screenshots)
+- [Built with](#built-with)
 - [Author](#author)
 - [Setup](#Setup)
 - [Run](#Run)
